@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todoist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+  </head>
+  <body class="max-w-full m-10 bg-gray-100">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Todoist</title>
-</head>
+    <div class="container mx-auto max-w-3xl mt-16 p-6 bg-white rounded-md shadow-md">
+      <h1 class="text-center text-3xl font-medium my-3 mb-5 border-b border-gray-400"><span class="text-green-300 text-3xl">TODO</span>IST</h1>
+      <!-- main -->
+      <main
+        class="main shadow-xl border border-solid border-t-0 min-h-auto px-5"
+      >
+        <!-- Form section -->
+        <form
+          onsubmit="createTodo(event)"
+          class="flex flex-row justify-between mb-2 pb-3 border-b border-gray-400"
+        >
+          <div class="w-[50%]">
+            <input
+              type="text"
+              placeholder="What are you doing today?"
+              id="todo-input"
+              class="w-full px-3 py-1 rounded-lg border border-gray-600 focus:border-green-500 focus:outline-none"
+            />
+            <span id="error-text" class="text-red-500 block hidden"
+              >Enter your task for today </span
+            >
+          </div>
+          <!-- Add todo btn -->
+          <button
+            id="add-todo-btn"
+            class="align-self-start bg-green-500 text-[white] px-3 py-2 hover:bg-green-700 rounded-lg"
+          >
+            Add Task
+          </button>
+          <!-- update todo btn -->
+          <button
+            type="button"
+            id="update-todo-btn"
+            onclick="updateTodo()"
+            class="align-self-start bg-purple-500 text-[white] px-3 py-2 hover:bg-purple-700 rounded-lg hidden"
+          >
+            Update Task
+          </button>
+        </form>
 
-<body class="max-w-full m-10 bg-gray-100">
-
-
-  <div class="container mx-auto max-w-3xl mt-16 p-6 bg-white rounded-md shadow-md">
-
-    <h1 class="text-center text-3xl font-medium my-3 mb-5 border-b border-gray-400"><span class="text-green-300 text-3xl">TODO</span>IST</h1>
-
-    <div class="flex flex-col md:flex-row mb-4 md:text-center gap-2">
-      <input type="text" id="todo-input" class="flex-1 border p-2 rounded-l focus:outline-none mb-2 md:mb-0 md:mr-2"
-        placeholder="What are you doing today?">
-
-      <button class="bg-green-700 w-[150px] rounded-md p-2 text-white hover:bg-green-950 mx-auto md:w-auto"
-        type="button" id="add-todo-Btn" onclick="addTodo()">Add Task</button>
-      <button class="hidden bg-yellow-500 w-[150px] rounded-md p-2 text-white hover:bg-yellow-700 mx-auto md:w-auto"
-        type="button" id="update-todo-Btn" onclick="updateTodo()">Update Task</button>
-
+        <!-- Todo area -->
+        <div id="todos" class="mt-12  m-auto"></div>
+      </main>
     </div>
 
-    <!-- display error prompt on the UI -->
-    <p id="prompt" class="text-center text-red-600"></p>
-
-    <!-- TodoList Container  -->
-    <section class="mt-12  m-auto" id="todoContainer"></section>
-    </section>
-  </div>
-
-  <!-- <script src="./util.js"></script> -->
-  <script src="index.js"></script>
-</body>
-
+    <script src="./utils.js"></script>
+    <script src="./index.js"></script>
+  </body>
 </html>
